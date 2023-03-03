@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio Version 17
+
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArcyBalance - Standalone Plugin", "ArcyBalance_StandalonePlugin.vcxproj", "{28D615AA-2184-9497-2786-A8C3EDA07FA4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D527F534-0704-8326-88B1-209CD9A7805E} = {D527F534-0704-8326-88B1-209CD9A7805E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArcyBalance - VST3", "ArcyBalance_VST3.vcxproj", "{39DFF4C9-AB76-AE54-B991-A3BDC15C185E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D527F534-0704-8326-88B1-209CD9A7805E} = {D527F534-0704-8326-88B1-209CD9A7805E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArcyBalance - Shared Code", "ArcyBalance_SharedCode.vcxproj", "{D527F534-0704-8326-88B1-209CD9A7805E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39DFF4C9-AB76-AE54-B991-A3BDC15C185E}.Debug|x64.ActiveCfg = Debug|x64
+		{39DFF4C9-AB76-AE54-B991-A3BDC15C185E}.Debug|x64.Build.0 = Debug|x64
+		{39DFF4C9-AB76-AE54-B991-A3BDC15C185E}.Release|x64.ActiveCfg = Release|x64
+		{39DFF4C9-AB76-AE54-B991-A3BDC15C185E}.Release|x64.Build.0 = Release|x64
+		{28D615AA-2184-9497-2786-A8C3EDA07FA4}.Debug|x64.ActiveCfg = Debug|x64
+		{28D615AA-2184-9497-2786-A8C3EDA07FA4}.Debug|x64.Build.0 = Debug|x64
+		{28D615AA-2184-9497-2786-A8C3EDA07FA4}.Release|x64.ActiveCfg = Release|x64
+		{28D615AA-2184-9497-2786-A8C3EDA07FA4}.Release|x64.Build.0 = Release|x64
+		{D527F534-0704-8326-88B1-209CD9A7805E}.Debug|x64.ActiveCfg = Debug|x64
+		{D527F534-0704-8326-88B1-209CD9A7805E}.Debug|x64.Build.0 = Debug|x64
+		{D527F534-0704-8326-88B1-209CD9A7805E}.Release|x64.ActiveCfg = Release|x64
+		{D527F534-0704-8326-88B1-209CD9A7805E}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
