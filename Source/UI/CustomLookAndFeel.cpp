@@ -26,12 +26,9 @@ juce::Slider::SliderLayout CustomLookAndFeel::getSliderLayout(juce::Slider& slid
 	return layout;
 }
 //定义了旋钮的位置、大小和中央的文本框
-
-void CustomLookAndFeel::drawRotarySlider(juce::Graphics& g, int x, int y, int width, int height, float sliderPos,
-	const float rotaryStartAngle, const float rotaryEndAngle, juce::Slider& slider)
-	//drawRotarySlider()函数对这个旋钮的影响是很大的，他确保了旋钮在缩放时不会变形，绘制了旋钮背后正方型的四个角，同时让旋钮的角度与数值相关联
+//drawRotarySlider()函数对这个旋钮的影响是很大的，他确保了旋钮在缩放时不会变形，绘制了旋钮背后正方型的四个角，同时让旋钮的角度与数值相关联
+void CustomLookAndFeel::drawRotarySlider(juce::Graphics& g, int x, int y, int width, int height, float sliderPos, const float rotaryStartAngle, const float rotaryEndAngle, juce::Slider& slider)
 {
-	auto fill = slider.findColour(juce::Slider::rotarySliderFillColourId);
 	auto bounds = juce::Rectangle<float>(x, y, width, height).reduced(2.0f);
 	auto radius = juce::jmin(bounds.getWidth(), bounds.getHeight()) / 2.0f;
 	auto toAngle = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
@@ -39,27 +36,13 @@ void CustomLookAndFeel::drawRotarySlider(juce::Graphics& g, int x, int y, int wi
 	auto arcRadius = radius - lineW * 1.6f;
 
 	juce::Path backgroundArc;
-	backgroundArc.addCentredArc(bounds.getCentreX(),
-		bounds.getCentreY(),
-		arcRadius,
-		arcRadius,
-		0.0f,
-		toAngle,
-		rotaryEndAngle,
-		true);
-	g.setColour(CCbase01(1.0f));
+	backgroundArc.addCentredArc(bounds.getCentreX(), bounds.getCentreY(), arcRadius, arcRadius, 0.0f, toAngle, rotaryEndAngle, true);
+	g.setColour(slider.findColour(juce::Slider::rotarySliderOutlineColourId));
 	g.strokePath(backgroundArc, juce::PathStrokeType(lineW, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
 
 	juce::Path valueArc;
-	valueArc.addCentredArc(bounds.getCentreX(),
-		bounds.getCentreY(),
-		arcRadius,
-		arcRadius,
-		0.0f,
-		rotaryStartAngle,
-		toAngle,
-		true);
-	g.setColour(fill);
+	valueArc.addCentredArc(bounds.getCentreX(), bounds.getCentreY(), arcRadius, arcRadius, 0.0f, rotaryStartAngle, toAngle, true);
+	g.setColour(slider.findColour(juce::Slider::rotarySliderFillColourId));
 	g.strokePath(valueArc, juce::PathStrokeType(lineW, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
 
 	g.setColour(CCbase3(1.0f));

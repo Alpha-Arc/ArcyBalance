@@ -23,8 +23,6 @@ Knob::Knob()
 	setRange(0.0, 100.0, 0.12);
 	setLookAndFeel(&customLookAndFeel);
 	setWantsKeyboardFocus(true);
-	setColour(juce::Slider::textBoxTextColourId, CCbase01(1.0f));
-	setColour(juce::Slider::textBoxOutlineColourId, CCbase3(1.0f));
 };
 Knob::~Knob() {};
 
@@ -34,35 +32,30 @@ void Knob::paint(juce::Graphics& g)
 
 	if (hasKeyboardFocus(false))
 	{
-		float length = getHeight() > 15 ? 5.0f : 4.0f;
-		float thick = getHeight() > 15 ? 3.0f : 2.5f;
-
+		float L(getHeight() > 15 ? 5.0f : 4.0f), T(getHeight() > 15 ? 3.0f : 2.5f), H(getHeight()), W(getWidth());
 		g.setColour(findColour(juce::Slider::textBoxOutlineColourId));
 
 		//          fromX       fromY        toX                  toY
-		g.drawLine(0, 0, 0, length, thick);
-		g.drawLine(0, 0, length, 0, thick);
-		g.drawLine(0, getHeight(), 0, getHeight() - length, thick);
-		g.drawLine(0, getHeight(), length, getHeight(), thick);
-		g.drawLine(getWidth(), getHeight(), getWidth() - length, getHeight(), thick);
-		g.drawLine(getWidth(), getHeight(), getWidth(), getHeight() - length, thick);
-		g.drawLine(getWidth(), 0, getWidth() - length, 0, thick);
-		g.drawLine(getWidth(), 0, getWidth(), length, thick);
+		g.drawLine(0, 0, 0, L, T);
+		g.drawLine(0, 0, L, 0, T);
+		g.drawLine(0, H, 0, H - L, T);
+		g.drawLine(0, H, L, H, T);
+		g.drawLine(W, H, W - L, H, T);
+		g.drawLine(W, H, W, H - L, T);
+		g.drawLine(W, 0, W - L, 0, T);
+		g.drawLine(W, 0, W, L, T);
 	}
 }
 
 void Knob::mouseDown(const juce::MouseEvent& event)
 {
 	juce::Slider::mouseDown(event);
-
 	setMouseCursor(juce::MouseCursor::NoCursor);
 }
 
 void Knob::mouseUp(const juce::MouseEvent& event)
 {
 	juce::Slider::mouseUp(event);
-
 	juce::Desktop::getInstance().getMainMouseSource().setScreenPosition(event.source.getLastMouseDownPosition());
-
 	setMouseCursor(juce::MouseCursor::NormalCursor);
 }

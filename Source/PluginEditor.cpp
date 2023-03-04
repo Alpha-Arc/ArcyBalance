@@ -16,13 +16,13 @@ ArcyBalanceAudioProcessorEditor::ArcyBalanceAudioProcessorEditor(ArcyBalanceAudi
 {
 	// Make sure that before the constructor has finished, you've set the
 	// editor's size to whatever you need it to be.
-	gainKnob.setColour(juce::Slider::textBoxTextColourId, CCbase01(1.0f));
-	gainKnob.setColour(juce::Slider::textBoxOutlineColourId, CCbase03(1.0f));
+	gainKnob.setColour(juce::Slider::textBoxTextColourId, CCbase01(0.8f));
+	gainKnob.setColour(juce::Slider::textBoxOutlineColourId, CCbase3(1.0f));
 	gainKnob.setColour(juce::Slider::rotarySliderFillColourId, CCviolet(1.0f));
 	gainKnob.setColour(juce::Slider::rotarySliderOutlineColourId, CCbase01(1.0f));
 
-	panKnob.setColour(juce::Slider::textBoxTextColourId, CCbase01(1.0f));
-	panKnob.setColour(juce::Slider::textBoxOutlineColourId, CCbase03(1.0f));
+	panKnob.setColour(juce::Slider::textBoxTextColourId, CCbase01(0.8f));
+	panKnob.setColour(juce::Slider::textBoxOutlineColourId, CCbase3(1.0f));
 	panKnob.setColour(juce::Slider::rotarySliderFillColourId, CCviolet(1.0f));
 	panKnob.setColour(juce::Slider::rotarySliderOutlineColourId, CCcyan(1.0f));
 
