@@ -19,9 +19,13 @@ ArcyBalanceAudioProcessor::ArcyBalanceAudioProcessor()
 #endif
 		.withOutput("Output", juce::AudioChannelSet::stereo(), true)
 #endif
-	), apvts(*this, nullptr, "Parameters", creatParameters())
+	), apvts(*this, nullptr, "Parameters", creatParameterLayout())
 #endif
 {
+	mGain.setGainLinear(0.0f);
+	mGain.setRampDurationSeconds(0.05);
+	mPanner.setRule(juce::dsp::PannerRule::squareRoot3dB);
+	mPanner.setPan(0.0f);
 }
 
 ArcyBalanceAudioProcessor::~ArcyBalanceAudioProcessor()
@@ -93,8 +97,12 @@ void ArcyBalanceAudioProcessor::changeProgramName(int index, const juce::String&
 //==============================================================================
 void ArcyBalanceAudioProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
-	// Use this method as the place to do any pre-playback
-	// initialisation that you need..
+	juce::dsp::ProcessSpec spec;
+	spec.maximumBlockSize = samplesPerBlock;
+	spec.sampleRate = sampleRate;
+	spec.numChannels = 2;
+	mGain.prepare(spec);
+	mPanner.prepare(spec);
 }
 
 void ArcyBalanceAudioProcessor::releaseResources()
@@ -135,31 +143,15 @@ void ArcyBalanceAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, j
 	auto totalNumInputChannels = getTotalNumInputChannels();
 	auto totalNumOutputChannels = getTotalNumOutputChannels();
 
-	auto g0 = apvts.getRawParameterValue("Pan");
-	auto g1 = apvts.getRawParameterValue("Gain");
-
-	if (g0->load() == previousGain)
-		buffer.applyGain(previousGain);
-	else
-		buffer.applyGainRamp(0, buffer.getNumSamples(), previousGain, g0->load()), previousGain = g0->load();
-
-	/*
-	if (g1->load() == previousPan)
-		juce::setpan(previousPan)
-	else
-		buffer.applyGainRamp(0, buffer.getNumSamples(), previousGain, g0->load()), previousGain = g0->load();
-	*/
-
-
-	for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
+	for (auto i(totalNumInputChannels); i < totalNumOutputChannels; ++i)
 		buffer.clear(i, 0, buffer.getNumSamples());
-
-
-
-	for (int channel = 0; channel < totalNumInputChannels; ++channel)
-	{
-		auto* channelData = buffer.getWritePointer(channel);
-	}
+	
+	mGain.setGainLinear(*apvts.getRawParameterValue("Gain"));
+	mPanner.setPan(*apvts.getRawParameterValue("Pan"));
+	juce::dsp::AudioBlock<float> block(buffer);
+	juce::dsp::ProcessContextReplacing<float> context(block);
+	mPanner.process(context);
+	mGain.process(context);
 }
 
 //==============================================================================
@@ -194,10 +186,10 @@ juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 	return new ArcyBalanceAudioProcessor();
 }
 
-juce::AudioProcessorValueTreeState::ParameterLayout ArcyBalanceAudioProcessor::creatParameters()
+juce::AudioProcessorValueTreeState::ParameterLayout ArcyBalanceAudioProcessor::creatParameterLayout()
 {
-	std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-	params.push_back(std::make_unique<juce::AudioParameterFloat>("Gain", "Gain", 0.0f, 1.0f, 1.0f));
-	params.push_back(std::make_unique<juce::AudioParameterFloat>("Pan", "Pan", 0.0f, 1.0f, 0.5f));
-	return { params.begin(),params.end() };
+	juce::AudioProcessorValueTreeState::ParameterLayout layout;
+	layout.add(std::make_unique<juce::AudioParameterFloat>("Gain", "Gain", 0.0f, 1.0f, 1.0f));
+	layout.add(std::make_unique<juce::AudioParameterFloat>("Pan", "Pan", -1.0f, 1.0f, 0.0f));
+	return layout;
 }

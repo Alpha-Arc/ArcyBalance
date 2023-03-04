@@ -8,7 +8,7 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-#include "Palette.h"
+#include "UI/Palette.h"
 
 //==============================================================================
 ArcyBalanceAudioProcessorEditor::ArcyBalanceAudioProcessorEditor(ArcyBalanceAudioProcessor& p)
@@ -16,32 +16,29 @@ ArcyBalanceAudioProcessorEditor::ArcyBalanceAudioProcessorEditor(ArcyBalanceAudi
 {
 	// Make sure that before the constructor has finished, you've set the
 	// editor's size to whatever you need it to be.
-	gainKnob.setColour(juce::Slider::rotarySliderFillColourId, CCviolet);
-	gainKnob.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 50, 25);
+	gainKnob.setColour(juce::Slider::textBoxTextColourId, CCbase01(1.0f));
+	gainKnob.setColour(juce::Slider::textBoxOutlineColourId, CCbase03(1.0f));
+	gainKnob.setColour(juce::Slider::rotarySliderFillColourId, CCviolet(1.0f));
+	gainKnob.setColour(juce::Slider::rotarySliderOutlineColourId, CCbase01(1.0f));
 
-	panKnob.setColour(juce::Slider::rotarySliderFillColourId, CCcyan);
-	panKnob.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 50, 25);
+	panKnob.setColour(juce::Slider::textBoxTextColourId, CCbase01(1.0f));
+	panKnob.setColour(juce::Slider::textBoxOutlineColourId, CCbase03(1.0f));
+	panKnob.setColour(juce::Slider::rotarySliderFillColourId, CCviolet(1.0f));
+	panKnob.setColour(juce::Slider::rotarySliderOutlineColourId, CCcyan(1.0f));
 
 	addAndMakeVisible(gainKnob);
 	addAndMakeVisible(panKnob);
 
-	gainKnobAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "Gain", gainKnob);
-	panKnobAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "Pan", panKnob);
-
 	setSize(400, 200);
 	setWantsKeyboardFocus(true);
+
+	gainKnobAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "Gain", gainKnob);
+	panKnobAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "Pan", panKnob);
 }
 
-ArcyBalanceAudioProcessorEditor::~ArcyBalanceAudioProcessorEditor()
-{
-}
+ArcyBalanceAudioProcessorEditor::~ArcyBalanceAudioProcessorEditor() {}
 
-//==============================================================================
-void ArcyBalanceAudioProcessorEditor::paint(juce::Graphics& g)
-{
-	// (Our component is opaque, so we must completely fill the background with a solid colour)
-	g.fillAll(CCbase03);
-}
+void ArcyBalanceAudioProcessorEditor::paint(juce::Graphics& g) { g.fillAll(CCbase03(1.0f)); }
 
 void ArcyBalanceAudioProcessorEditor::resized()
 {

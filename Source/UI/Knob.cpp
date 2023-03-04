@@ -23,8 +23,8 @@ Knob::Knob()
 	setRange(0.0, 100.0, 0.12);
 	setLookAndFeel(&customLookAndFeel);
 	setWantsKeyboardFocus(true);
-	setColour(juce::Slider::textBoxTextColourId, CCbase01);
-	setColour(juce::Slider::textBoxOutlineColourId, CCbase3);
+	setColour(juce::Slider::textBoxTextColourId, CCbase01(1.0f));
+	setColour(juce::Slider::textBoxOutlineColourId, CCbase3(1.0f));
 };
 Knob::~Knob() {};
 

@@ -4,14 +4,14 @@
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginFormats="buildStandalone,buildVST3"
               cppLanguageStandard="20">
   <MAINGROUP id="G9jb5u" name="ArcyBalance">
-    <GROUP id="{1712A1EF-6703-8D16-455E-93AADFFEC68B}" name="GUI">
-      <FILE id="Qb5jJp" name="CustomLookAndFeel.cpp" compile="1" resource="0"
-            file="Source/CustomLookAndFeel.cpp"/>
-      <FILE id="EdDM8k" name="CustomLookAndFeel.h" compile="0" resource="0"
-            file="Source/CustomLookAndFeel.h"/>
-      <FILE id="tZlAKG" name="Palette.h" compile="0" resource="0" file="Source/Palette.h"/>
-      <FILE id="lmtrOM" name="Knob.cpp" compile="1" resource="0" file="Source/Knob.cpp"/>
-      <FILE id="IQOLQe" name="Knob.h" compile="0" resource="0" file="Source/Knob.h"/>
+    <GROUP id="{1712A1EF-6703-8D16-455E-93AADFFEC68B}" name="UI">
+      <FILE id="wb8Eyp" name="CustomLookAndFeel.cpp" compile="1" resource="0"
+            file="Source/UI/CustomLookAndFeel.cpp"/>
+      <FILE id="vS6J25" name="CustomLookAndFeel.h" compile="0" resource="0"
+            file="Source/UI/CustomLookAndFeel.h"/>
+      <FILE id="fh6f27" name="Knob.cpp" compile="1" resource="0" file="Source/UI/Knob.cpp"/>
+      <FILE id="xzsWRG" name="Knob.h" compile="0" resource="0" file="Source/UI/Knob.h"/>
+      <FILE id="f8GTfY" name="Palette.h" compile="0" resource="0" file="Source/UI/Palette.h"/>
     </GROUP>
     <GROUP id="{0A318BBE-7DB1-09CF-E94B-B6E69F8BC00C}" name="Source">
       <FILE id="wuNUTq" name="PluginProcessor.cpp" compile="1" resource="0"
@@ -33,6 +33,7 @@
     <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
@@ -58,6 +59,7 @@
         <MODULEPATH id="juce_graphics" path="../../../../../Program Files/JUCE/JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../../../../Program Files/JUCE/JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../../../Program Files/JUCE/JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../../../../../Program Files/JUCE/JUCE/modules"/>
       </MODULEPATHS>
     </VS2022>
   </EXPORTFORMATS>

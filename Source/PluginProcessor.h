@@ -59,10 +59,9 @@ public:
 	juce::AudioProcessorValueTreeState apvts;
 
 private:
-	//==============================================================================
-	juce::AudioProcessorValueTreeState::ParameterLayout creatParameters();
-	float previousGain = 1.0f;
-	float previousPan = 0.5f;
-	//==============================================================================
+	juce::AudioProcessorValueTreeState::ParameterLayout creatParameterLayout();
+	juce::dsp::Gain<float> mGain;
+	juce::dsp::Panner<float> mPanner;
+
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ArcyBalanceAudioProcessor)
 };
