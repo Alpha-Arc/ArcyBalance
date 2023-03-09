@@ -22,6 +22,7 @@ public:
 	void paint(juce::Graphics& g) override;
 	void mouseDown(const juce::MouseEvent& event) override;
 	void mouseUp(const juce::MouseEvent& event) override;
+	void ColorInit(juce::Colour textBoxTextColour, juce::Colour textBoxOutlineColour, juce::Colour rotarySliderFillColour, juce::Colour rotarySliderOutlineColour);
 
 private:
 	CustomLookAndFeel customLookAndFeel;

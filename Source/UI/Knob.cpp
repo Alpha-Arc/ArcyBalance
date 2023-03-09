@@ -35,7 +35,6 @@ void Knob::paint(juce::Graphics& g)
 		float L(getHeight() > 15 ? 5.0f : 4.0f), T(getHeight() > 15 ? 3.0f : 2.5f), H(getHeight()), W(getWidth());
 		g.setColour(findColour(juce::Slider::textBoxOutlineColourId));
 
-		//          fromX       fromY        toX                  toY
 		g.drawLine(0, 0, 0, L, T);
 		g.drawLine(0, 0, L, 0, T);
 		g.drawLine(0, H, 0, H - L, T);
@@ -58,4 +57,12 @@ void Knob::mouseUp(const juce::MouseEvent& event)
 	juce::Slider::mouseUp(event);
 	juce::Desktop::getInstance().getMainMouseSource().setScreenPosition(event.source.getLastMouseDownPosition());
 	setMouseCursor(juce::MouseCursor::NormalCursor);
+}
+
+void Knob::ColorInit(juce::Colour textBoxTextColour, juce::Colour textBoxOutlineColour, juce::Colour rotarySliderFillColour, juce::Colour rotarySliderOutlineColour)
+{
+	Knob::setColour(juce::Slider::textBoxTextColourId, textBoxTextColour);
+	Knob::setColour(juce::Slider::textBoxOutlineColourId, textBoxOutlineColour);
+	Knob::setColour(juce::Slider::rotarySliderFillColourId, rotarySliderFillColour);
+	Knob::setColour(juce::Slider::rotarySliderOutlineColourId, rotarySliderOutlineColour);
 }
