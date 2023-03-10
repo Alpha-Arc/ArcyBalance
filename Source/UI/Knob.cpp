@@ -22,6 +22,7 @@ Knob::Knob()
 	setVelocityModeParameters(0.5, 1, 0.09, false);
 	setRange(0.0, 100.0, 0.12);
 	setLookAndFeel(&customLookAndFeel);
+	setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 	setWantsKeyboardFocus(true);
 };
 Knob::~Knob() {};

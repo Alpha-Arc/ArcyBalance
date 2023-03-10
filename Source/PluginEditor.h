@@ -10,7 +10,8 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
-#include "UI\Knob.h"
+#include "UI/Knob.h"
+#include "UI/Palette.h"
 
 class ArcyBalanceAudioProcessorEditor : public juce::AudioProcessorEditor
 {

@@ -52,13 +52,12 @@ void CustomLookAndFeel::drawRotarySlider(juce::Graphics& g, int x, int y, int wi
 juce::Label* CustomLookAndFeel::createSliderTextBox(juce::Slider& slider)
 {
 	auto* l = new juce::Label();
-
-	l->setFont(50.0f);
-	l->setJustificationType(juce::Justification::centred);
-	l->setColour(juce::Label::textColourId, slider.findColour(juce::Slider::textBoxTextColourId));
-	l->setColour(juce::Label::textWhenEditingColourId, slider.findColour(juce::Slider::textBoxTextColourId));
+	//l->setFont(50.0f);
+	//l->setJustificationType(juce::Justification::centred);
+	//l->setColour(juce::Label::textColourId, slider.findColour(juce::Slider::textBoxTextColourId));
+	//l->setColour(juce::Label::textWhenEditingColourId, slider.findColour(juce::Slider::textBoxTextColourId));
 	l->setColour(juce::Label::outlineWhenEditingColourId, slider.findColour(juce::Slider::textBoxOutlineColourId));
-	l->setInterceptsMouseClicks(false, false);
+	//l->setInterceptsMouseClicks(false, false);
 	//如果这个函数没有被设定为false，那么你将无法在文本框上拖拽，如果此时文本框在旋钮中央的话，这会是一个非常致命的问题。
 	return l;
 }
