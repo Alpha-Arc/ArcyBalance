@@ -5,10 +5,6 @@
               cppLanguageStandard="20">
   <MAINGROUP id="G9jb5u" name="ArcyBalance">
     <GROUP id="{1712A1EF-6703-8D16-455E-93AADFFEC68B}" name="UI">
-      <FILE id="wb8Eyp" name="CustomLookAndFeel.cpp" compile="1" resource="0"
-            file="Source/UI/CustomLookAndFeel.cpp"/>
-      <FILE id="vS6J25" name="CustomLookAndFeel.h" compile="0" resource="0"
-            file="Source/UI/CustomLookAndFeel.h"/>
       <FILE id="fh6f27" name="Knob.cpp" compile="1" resource="0" file="Source/UI/Knob.cpp"/>
       <FILE id="xzsWRG" name="Knob.h" compile="0" resource="0" file="Source/UI/Knob.h"/>
       <FILE id="f8GTfY" name="Palette.h" compile="0" resource="0" file="Source/UI/Palette.h"/>
